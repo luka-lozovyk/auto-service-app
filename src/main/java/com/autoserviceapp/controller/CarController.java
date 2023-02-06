@@ -30,11 +30,6 @@ public class CarController {
         this.ownerService = ownerService;
     }
 
-    /*
-     POST - Создание сущности «Машина» +
-• PUT - Редактирование данных сущности+
-     */
-
     @PostMapping
     @ApiOperation(value = "Creates new car")
     public CarResponseDto save(@RequestBody CarRequestDto carRequestDto) {

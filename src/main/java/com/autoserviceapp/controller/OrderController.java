@@ -10,6 +10,7 @@ import com.autoserviceapp.model.enums.OrderStatus;
 import com.autoserviceapp.service.MechanicService;
 import com.autoserviceapp.service.OrderService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -66,6 +67,11 @@ public class OrderController {
     @PutMapping("/change-status/{id}")
     @ApiOperation(value = "Changes order status by id")
     public OrderResponseDto changeOrderStatus(@PathVariable Long id,
+                                              @ApiParam("Possible params: Accepted, "
+                                                      + "In_progress, "
+                                                      + "Completed_successfully, "
+                                                      + "Completed_unsuccessfully, "
+                                                      + "Paid")
                                               @RequestParam String status) {
         Order order = orderService.getOrderById(id);
         order.setOrderStatus(OrderStatus.valueOf(status.toUpperCase()));
